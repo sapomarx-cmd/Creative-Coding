@@ -1,12 +1,39 @@
+let count = 0;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(255, 45, 200);
+  textFont("Arial");
+  textAlign(CENTER, CENTER);
+
+  background(255, 253, 231);
+  textSize(50);
+  fill(0);
+  text(":(", width / 2, height / 2);
 }
 
 function draw() {
-  circle(mouseX, mouseY, 60);
-}
+  if (frameCount % 60 == 0) {
+    count++;
 
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+    if (count >= 63) {
+      count = 0;
+      background(255, 253, 231);
+      textSize(50);
+      fill(0);
+      text(":(", width / 2, height / 2);
+    }
+  }
+
+  if (count < 59) {
+    if (frameCount % 60 == 0) {
+      textSize(50);
+      fill(random(255), random(255), random(255));
+      text(":(", random(width), random(height));
+    }
+  } else {
+    background(255, 253, 231);
+    textSize(random(120, 180));
+    fill(random(255), random(255), random(255));
+    text("<3", width / 2, height / 2);
+  }
 }
